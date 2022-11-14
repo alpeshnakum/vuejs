@@ -21,6 +21,24 @@
 				@totalSize="increaseSizeBy += 0.1" />
 		</div>
 		<!-- =============================== -->
+		<b><u>This is submitForm.vue file</u></b>
+		<br><br>
+		<p><b>Test Form</b></p>
+		<submitForm  />
+		<!-- =============================== -->
+		<br>
+		<b><u>This is vueFilter.vue file</u></b>
+		<br><br>
+		<vueFilter  />
+		<!-- =============================== -->
+		<br>
+		<b><u>This is lifeCycle.vue file</u></b>
+		<h5>Open console first</h5>
+		<div v-if="toggleFlag">
+            <lifeCycle />
+        </div>
+        <button v-on:click="fn_toggle">Toggle</button>
+		<!-- =============================== -->
 	</div>
 </template>
 
@@ -29,6 +47,9 @@ import HelloWorld from './components/HelloWorld.vue';
 import testComp from './components/testComp.vue';
 import ifLoop from './components/ifLoop.vue';
 import passProps from './components/passingProps.vue';
+import submitForm from './components/submitForm.vue';
+import vueFilter from './components/vueFilter.vue';
+import lifeCycle from './components/lifeCycle.vue';
 
 export default {
 	name: 'App',
@@ -36,12 +57,18 @@ export default {
 		HelloWorld,
 		testComp,
 		ifLoop,
-		passProps
+		passProps,
+		submitForm,
+		vueFilter,
+		lifeCycle
 	},
+
 
 	// data() is used to pass variable array objects and it's data
 	data() {
 		return {
+
+			toggleFlag: true,
 
 			// it will pass current time and date
 			message: new Date().toLocaleString(),
@@ -76,6 +103,9 @@ export default {
 
 	// mehtods are used to pass functions
 	methods: {
+		fn_toggle() { 
+            this.toggleFlag = !this.toggleFlag;
+        },
 		fn_reverseMsg: function () {
 			this.variableTest = this.variableTest.split('').reverse().join('');
 		}

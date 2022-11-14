@@ -5,8 +5,13 @@
         {{ text }}
         <br><br>
 
+        
+        <b>Use of v-html</b>
+        <br>
+        <div v-html="htmlcontent"></div>
+
         <!-- show variable text on hover  -->
-        <span v-bind:title="text"> 
+        <span v-bind:title="text">
             <b>Hover here...!</b>
         </span>
     </div>
@@ -17,7 +22,13 @@
 export default {
     name: 'testComp',
     props: {
-        text: String
+        text: String,
+    },
+    data() {
+        return {
+            // used to pass html content
+			htmlcontent: "<h1>this is htmlcontent variable details</h1>",
+        }
     }
 }
 </script>
