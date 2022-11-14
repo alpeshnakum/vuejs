@@ -1,5 +1,17 @@
 <template>
 	<div id="app">
+
+		<b><u>This is vue routing file</u></b>
+		<nav class="menu">
+			<ul class="menu-list">
+				<li class="menu-item"><router-link to="/">Home</router-link></li>
+				<li class="menu-item"><router-link to="/about">About</router-link></li>
+				<li class="menu-item"><router-link to="/contact">Contact</router-link></li>
+				<li class="menu-item"><router-link to="/settings">Settings</router-link></li>
+			</ul>
+		</nav>
+		<router-view></router-view>
+		<hr>
 		<!-- =============================== -->
 		<h1><u>This is app.vue file</u></h1>
 		<HelloWorld msg="This is HelloWold.vue file." />
@@ -51,17 +63,18 @@ import submitForm from './components/submitForm.vue';
 import vueFilter from './components/vueFilter.vue';
 import lifeCycle from './components/lifeCycle.vue';
 
+
 export default {
 	name: 'App',
 	components: {
-		HelloWorld,
-		testComp,
-		ifLoop,
-		passProps,
-		submitForm,
-		vueFilter,
-		lifeCycle
-	},
+    HelloWorld,
+    testComp,
+    ifLoop,
+    passProps,
+    submitForm,
+    vueFilter,
+    lifeCycle,
+},
 
 
 	// data() is used to pass variable array objects and it's data
@@ -123,5 +136,18 @@ export default {
 	background-color: #00000028;
 	margin: 20px;
 	padding: 20px;
+}
+
+.menu-list{
+    list-style: none;
+    width: auto;
+    height: 30px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.menu-item{
+    float: left;
+    margin: 5px 30px 0px 30px;
 }
 </style>
