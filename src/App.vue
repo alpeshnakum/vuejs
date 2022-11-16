@@ -4,10 +4,18 @@
 		<b><u>This is vue routing file</u></b>
 		<nav class="menu">
 			<ul class="menu-list">
-				<li class="menu-item"><router-link to="/">Home</router-link></li>
-				<li class="menu-item"><router-link to="/about">About</router-link></li>
-				<li class="menu-item"><router-link to="/contact">Contact</router-link></li>
-				<li class="menu-item"><router-link to="/settings">Settings</router-link></li>
+				<li class="menu-item">
+					<router-link to="/">Home</router-link>
+				</li>
+				<li class="menu-item">
+					<router-link to="/about">About</router-link>
+				</li>
+				<li class="menu-item">
+					<router-link to="/contact">Contact</router-link>
+				</li>
+				<li class="menu-item">
+					<router-link to="/settings">Settings</router-link>
+				</li>
 			</ul>
 		</nav>
 		<router-view></router-view>
@@ -15,6 +23,7 @@
 		<!-- =============================== -->
 		<h1><u>This is app.vue file</u></h1>
 		<HelloWorld msg="This is HelloWold.vue file." />
+		<hr>
 		<!-- =============================== -->
 		<h4>this is nothing from App.vue (remove scoped from style in HelloWorld.vue)</h4>
 		<hr>
@@ -32,24 +41,94 @@
 			<passProps v-for="singleUser in userData" :key="singleUser.id" :userName="singleUser.name"
 				@totalSize="increaseSizeBy += 0.1" />
 		</div>
+		<hr>
 		<!-- =============================== -->
 		<b><u>This is submitForm.vue file</u></b>
 		<br><br>
 		<p><b>Test Form</b></p>
-		<submitForm  />
+		<submitForm />
+		<hr>
 		<!-- =============================== -->
 		<br>
 		<b><u>This is vueFilter.vue file</u></b>
 		<br><br>
-		<vueFilter  />
+		<vueFilter />
+		<hr>
 		<!-- =============================== -->
 		<br>
 		<b><u>This is lifeCycle.vue file</u></b>
 		<h5>Open console first</h5>
 		<div v-if="toggleFlag">
-            <lifeCycle />
-        </div>
-        <button v-on:click="fn_toggle">Toggle</button>
+			<lifeCycle />
+		</div>
+		<button v-on:click="fn_toggle">Toggle</button>
+		<hr>
+		<!-- =============================== -->
+		<br><br>
+		<b><u>This is EmpList.vue file</u></b>
+		<br><br>
+		<vueEmpList />
+		<hr>
+		<!-- =============================== -->
+		<br><br>
+		<b><u>This is computed.vue file</u></b>
+		<br><br>
+		<vueComputed />
+		<hr>
+		<!-- =============================== -->
+		<br><br>
+		<b><u>This is watcher.vue file</u></b>
+		<br><br>
+		<vueWatcher />
+		<hr>
+		<!-- =============================== -->
+		<br><br>
+		<b><u>This is vueSlots.vue file</u></b>
+		<br><br>
+		<vueSlots>
+			<h1>Slot1: vueSlots 1</h1>
+		</vueSlots>
+		<vueSlots>
+			<p>Slot2: toggleFlag = {{ toggleFlag }}</p>
+		</vueSlots>
+		<vueSlots>
+			<p>Slot3: new_msg = {{ new_msg }}</p>
+		</vueSlots>
+		<vueSlots>
+			<p>Slot4: userData = {{ userData }}</p>
+		</vueSlots>
+		<vueSlots></vueSlots>
+		<hr>
+		<!-- =============================== -->
+		<br><br>
+		<b><u>This is vueSlotsWithName.vue file</u></b><br>
+		<p>Use of slots with name (Multiple slots)</p>
+		<br>
+		<div class="products">
+			<vueSlotsNames>
+				<template v-slot:header>This is product Heading</template>
+				<template v-slot:content>This is product Description</template>
+				<template v-slot:footer><button>Buy Now!</button></template>
+			</vueSlotsNames>
+			<vueSlotsNames>
+				<template v-slot:header></template>
+				<template v-slot:content></template>
+				<template v-slot:footer></template>
+			</vueSlotsNames>
+		</div>
+		<hr>
+		<!-- =============================== -->
+		<br><br>
+		<b><u>This is dynamicComponent.vue file</u></b>
+		<br><br>
+		<vueDynamicCompo />
+		<hr>
+		<!-- =============================== -->
+		<br><br>
+		<b><u>This is refs.vue file</u></b>
+		<br><br>
+		<vueRefs />
+		<hr>
 		<!-- =============================== -->
 	</div>
 </template>
@@ -62,19 +141,32 @@ import passProps from './components/passingProps.vue';
 import submitForm from './components/submitForm.vue';
 import vueFilter from './components/vueFilter.vue';
 import lifeCycle from './components/lifeCycle.vue';
-
+import vueEmpList from './components/EmpList.vue';
+import vueComputed from './components/computed.vue';
+import vueWatcher from './components/watcherVue.vue';
+import vueSlots from './components/vueSlots.vue';
+import vueSlotsNames from './components/slotsWithName.vue';
+import vueDynamicCompo from './components/dynamicComponent.vue';
+import vueRefs from './components/refs.vue';
 
 export default {
 	name: 'App',
 	components: {
-    HelloWorld,
-    testComp,
-    ifLoop,
-    passProps,
-    submitForm,
-    vueFilter,
-    lifeCycle,
-},
+		HelloWorld,
+		testComp,
+		ifLoop,
+		passProps,
+		submitForm,
+		vueFilter,
+		lifeCycle,
+		vueEmpList,
+		vueComputed,
+		vueWatcher,
+		vueSlots,
+		vueSlotsNames,
+		vueDynamicCompo,
+		vueRefs
+	},
 
 
 	// data() is used to pass variable array objects and it's data
@@ -116,9 +208,9 @@ export default {
 
 	// mehtods are used to pass functions
 	methods: {
-		fn_toggle() { 
-            this.toggleFlag = !this.toggleFlag;
-        },
+		fn_toggle() {
+			this.toggleFlag = !this.toggleFlag;
+		},
 		fn_reverseMsg: function () {
 			this.variableTest = this.variableTest.split('').reverse().join('');
 		}
@@ -138,16 +230,16 @@ export default {
 	padding: 20px;
 }
 
-.menu-list{
-    list-style: none;
-    width: auto;
-    height: 30px;
-    margin: 10px;
-    padding: 10px;
+.menu-list {
+	list-style: none;
+	width: auto;
+	height: 30px;
+	margin: 10px;
+	padding: 10px;
 }
 
-.menu-item{
-    float: left;
-    margin: 5px 30px 0px 30px;
+.menu-item {
+	float: left;
+	margin: 5px 30px 0px 30px;
 }
 </style>
